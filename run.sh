@@ -15,7 +15,6 @@ gfortran MCIE.f90 -o MCIE -fopenmp
 
 if [ $? -eq 0 ]; then
     echo "COMPILATION SUCCESSFUL...RUNNING PROGRAM"
-    sleep 1
     ./MCIE
     echo "INTEGRAL ESTIMATION COMPLETE"
 fi
@@ -25,3 +24,4 @@ if run_plot; then
     else
         echo "CSV FILE OUTPUT IN DIRECTORY"
 fi
+rm MCIE

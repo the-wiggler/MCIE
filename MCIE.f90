@@ -9,17 +9,17 @@ program integralMCF
     call random_seed()
 
     a = 0.0_dp ! lower range of integration
-    b = 5.0_dp ! upper range of integration
-    batches = 800 ! how many integrations to compute
+    b = 1_dp ! upper range of integration
+    batches = 7 ! how many integrations to compute
     histories = 1000
-    lit_val = 0.52791728116532241384461568_dp
+    lit_val = 0.822467033424113218236_dp
 ! HEY YOU SHOULD ADD A CONFIDENCE INTERVAL FEATURE!!! *&()*@()#*()@&)!(*#$&#*)(!@#$*&()#@*&)($*&()^*)B^&(#)B&*(^@#)*($^*@#)$^@)#@#$*)(@#(*$*@#()$))
     allocate(IMC_val(batches), history_count(batches), variance(batches), stdv(batches), rel_err(batches), batch_time(batches))
 
     ! Creates an array of histories that each batch takes its respective index of
     do k = 1, batches
         history_count(k) = histories
-        histories = histories * 1.01
+        histories = histories * 10
     end do
 
     sum_hist = sum(history_count)
@@ -74,7 +74,7 @@ contains
 
     function f(x) result(y)
         real(dp) :: x, y
-        y = x
+        y = log(1 + x) / x
     end function f
 
 end program integralMCF
