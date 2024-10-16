@@ -10,8 +10,8 @@ program integralMCF
 
     a = 0.0_dp ! lower range of integration
     b = 1_dp ! upper range of integration
-    batches = 100000 ! how many integrations to compute
-    histories = 10000
+    batches = 12000 ! how many integrations to compute
+    histories = 1000
     lit_val = 0.822467033424113218236_dp
 ! HEY YOU SHOULD ADD A CONFIDENCE INTERVAL FEATURE!!! *&()*@()#*()@&)!(*#$&#*)(!@#$*&()#@*&)($*&()^*)B^&(#)B&*(^@#)*($^*@#)$^@)#@#$*)(@#(*$*@#()$))
     allocate(IMC_val(batches), history_count(batches), variance(batches), stdv(batches), rel_err(batches), batch_time(batches))
@@ -19,7 +19,7 @@ program integralMCF
     ! Creates an array of histories that each batch takes its respective index of
     do k = 1, batches
         history_count(k) = histories
-        histories = histories * 1.0001
+        histories = histories * 1.001
     end do
 
     sum_hist = sum(history_count)
